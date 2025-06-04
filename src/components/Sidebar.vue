@@ -1,53 +1,97 @@
 <template>
-  <aside class="sidebar">
-    <nav class="nav flex-column align-items-center py-3">
-      <router-link
-        to="/dashboard"
-        class="nav-link text-white d-flex align-items-center justify-content-center"
-        style="width: 100%; height: 48px"
-        title="Dashboard"
+  <aside
+    class="sidebar d-flex flex-column justify-content-between align-items-center py-3"
+  >
+    <!-- Top C Icon -->
+    <div class="icon-group d-flex flex-column gap-3">
+      <div class="icon-box brand-icon">
+        <span class="brand-text">C</span>
+      </div>
+
+      <!-- Sidebar icons 2-7 -->
+      <div
+        v-for="(icon, index) in sidebarIcons.slice(0, 5)"
+        :key="'icon-' + index"
+        class="icon-box"
       >
-        <i class="bi bi-kanban fs-5"></i>
-      </router-link>
-      <a
-        href="#"
-        class="nav-link text-white-50 d-flex align-items-center justify-content-center"
-        style="width: 100%; height: 48px"
-        title="Calendar"
-      >
-        <i class="bi bi-calendar fs-5"></i>
-      </a>
-      <a
-        href="#"
-        class="nav-link text-white-50 d-flex align-items-center justify-content-center"
-        style="width: 100%; height: 48px"
-        title="Reports"
-      >
-        <i class="bi bi-graph-up fs-5"></i>
-      </a>
-      <a
-        href="#"
-        class="nav-link text-white-50 d-flex align-items-center justify-content-center"
-        style="width: 100%; height: 48px"
-        title="Settings"
-      >
-        <i class="bi bi-gear fs-5"></i>
-      </a>
-    </nav>
+        <img :src="icon" alt="sidebar icon" class="icon-image" />
+      </div>
+    </div>
+
+    <!-- Bottom icon (sidebar-8.png) -->
+    <div class="icon-group d-flex flex-column gap-3 mb-2">
+      <div class="icon-box">
+        <img :src="sidebarIcons[5]" alt="sidebar icon" class="icon-image" />
+      </div>
+      <div class="icon-box">
+        <img :src="sidebarIcons[6]" alt="sidebar icon" class="icon-image" />
+      </div>
+    </div>
   </aside>
 </template>
 
-<style>
-.sidebar .nav-link {
-  transition: all 0.2s ease;
+<script>
+import icon2 from "../assets/icons/sidebar-2.png";
+import icon3 from "../assets/icons/sidebar-3.png";
+import icon4 from "../assets/icons/sidebar-4.png";
+import icon5 from "../assets/icons/sidebar-5.png";
+import icon6 from "../assets/icons/sidebar-6.png";
+import icon7 from "../assets/icons/sidebar-7.png";
+import icon8 from "../assets/icons/sidebar-8.png";
+
+export default {
+  data() {
+    return {
+      sidebarIcons: [icon2, icon3, icon4, icon5, icon6, icon7, icon8], // 7 icons from 2 to 8
+    };
+  },
+};
+</script>
+
+<style scoped>
+.sidebar {
+  width: 60px;
+  background-color: #ffffff;
+  position: fixed;
+  height: 100vh;
+  z-index: 1000;
 }
 
-.sidebar .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+.icon-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sidebar .nav-link.router-link-exact-active {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white !important;
+.icon-box {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon-box:hover {
+  background-color: #f0f0f0;
+}
+
+.icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(50%);
+}
+
+.brand-icon {
+  background-color: #2cba7a;
+}
+
+.brand-text {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: sans-serif;
 }
 </style>
