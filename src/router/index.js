@@ -5,10 +5,6 @@ import TaskDetail from "../pages/TaskDetail.vue";
 const routes = [
   {
     path: "/",
-    redirect: "/dashboard",
-  },
-  {
-    path: "/dashboard",
     name: "Dashboard",
     component: Dashboard,
   },
