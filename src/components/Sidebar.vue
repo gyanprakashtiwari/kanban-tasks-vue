@@ -89,8 +89,8 @@ export default {
 }
 
 .brand-text {
-  color: white;
-  font-weight: bold;
+  color: #02532f;
+  /* font-weight: bold; */
   font-size: 20px;
   font-family: sans-serif;
 }
