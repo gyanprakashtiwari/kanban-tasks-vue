@@ -1,0 +1,26 @@
+// Custom variables
+$primary: #4e73df;
+$secondary: #858796;
+$success: #1cc88a;
+$info: #36b9cc;
+$warning: #f6c23e;
+$danger: #e74a3b;
+$light: #f8f9fc;
+$dark: #5a5c69;
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Custom styles
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+// Import this in main.js instead of bootstrap.css
