@@ -1,10 +1,20 @@
 <template>
   <div>
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="mb-0">Your Tasks</h2>
-      <button class="btn btn-primary" @click="showAddTaskModal">
-        <i class="bi bi-plus"></i> Add Task
-      </button>
+    <div class="row d-flex justify-content-end align-items-center mb-4">
+      <div class="col-6">
+        <h3 class="mb-0">Your Tasks</h3>
+      </div>
+
+      <div class="col-6">
+        <div class="d-flex justify-content-end align-items-center gap-2">
+          <button class="btn btn-primary btn-sm" @click="showAddTaskModal">
+            Add Task
+          </button>
+          <button class="btn btn-outline-dark btn-sm" @click="openInviteModal">
+            Invite
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="row">
