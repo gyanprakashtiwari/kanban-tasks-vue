@@ -57,7 +57,6 @@ export const useTaskStore = defineStore("tasks", () => {
       dueDate: "2023-11-30",
       comments: [],
     },
-    // New TODO task
     {
       id: "4",
       title: "Design landing page",
@@ -75,7 +74,6 @@ export const useTaskStore = defineStore("tasks", () => {
       dueDate: "2023-12-20",
       comments: [],
     },
-    // New DOING task
     {
       id: "5",
       title: "Integrate payment gateway",
@@ -94,7 +92,6 @@ export const useTaskStore = defineStore("tasks", () => {
       dueDate: "2023-12-25",
       comments: [],
     },
-    // New DONE task
     {
       id: "6",
       title: "Write unit tests",
