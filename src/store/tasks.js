@@ -11,11 +11,7 @@ export const useTaskStore = defineStore("tasks", () => {
       description: "Add drag and drop functionality between columns",
       status: TASK_STATUS.DOING,
       assignee: { name: "John Doe", avatar: "https://i.pravatar.cc/150?img=1" },
-      subtasks: [
-        { id: "1-1", title: "Research libraries", completed: true },
-        { id: "1-2", title: "Implement basic drag", completed: true },
-        { id: "1-3", title: "Handle drop events", completed: false },
-      ],
+      subtasks: [],
       labels: ["Feature"],
       dueDate: "2023-12-15",
       comments: [
@@ -59,6 +55,61 @@ export const useTaskStore = defineStore("tasks", () => {
       ],
       labels: ["Backend"],
       dueDate: "2023-11-30",
+      comments: [],
+    },
+    // New TODO task
+    {
+      id: "4",
+      title: "Design landing page",
+      description: "Create a clean, modern landing page design",
+      status: TASK_STATUS.TODO,
+      assignee: {
+        name: "Alex Green",
+        avatar: "https://i.pravatar.cc/150?img=4",
+      },
+      subtasks: [
+        { id: "4-1", title: "Sketch layout", completed: false },
+        { id: "4-2", title: "Select color scheme", completed: false },
+      ],
+      labels: ["Design", "UI"],
+      dueDate: "2023-12-20",
+      comments: [],
+    },
+    // New DOING task
+    {
+      id: "5",
+      title: "Integrate payment gateway",
+      description: "Setup and test payment integration with Stripe",
+      status: TASK_STATUS.DOING,
+      assignee: {
+        name: "Lily Brown",
+        avatar: "https://i.pravatar.cc/150?img=5",
+      },
+      subtasks: [
+        { id: "5-1", title: "Create Stripe account", completed: true },
+        { id: "5-2", title: "Integrate with backend", completed: false },
+        { id: "5-3", title: "Test transactions", completed: false },
+      ],
+      labels: ["Integration"],
+      dueDate: "2023-12-25",
+      comments: [],
+    },
+    // New DONE task
+    {
+      id: "6",
+      title: "Write unit tests",
+      description: "Add unit tests for utility functions",
+      status: TASK_STATUS.DONE,
+      assignee: {
+        name: "Chris Evans",
+        avatar: "https://i.pravatar.cc/150?img=6",
+      },
+      subtasks: [
+        { id: "6-1", title: "Test formatDate", completed: true },
+        { id: "6-2", title: "Test API helper", completed: true },
+      ],
+      labels: ["Testing"],
+      dueDate: "2023-11-28",
       comments: [],
     },
   ]);
