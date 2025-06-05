@@ -3,8 +3,8 @@
     <Sidebar />
     <div class="main-content d-flex flex-column flex-grow-1">
       <Header />
-      <div class="content-wrapper px-5 flex-grow-1">
-        <div class="mx-5">
+      <div class="content-wrapper px-lg-5 flex-grow-1">
+        <div class="mx-lg-5">
           <router-view />
         </div>
       </div>
