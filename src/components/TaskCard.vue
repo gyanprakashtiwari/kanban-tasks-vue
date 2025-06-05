@@ -1,6 +1,6 @@
 <template>
   <div class="card mb-3 task-card" draggable="true" @dragstart="onDragStart">
-    <div class="card-body px-3 pt-0">
+    <div class="card-body ps-3 pe-1 pt-0">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <h6 class="card-title mb-0 text-truncate pe-2" style="max-width: 85%">
           {{ task.title }}
@@ -8,7 +8,7 @@
 
         <div class="dropdown" @click.stop>
           <button
-            class="btn btn-sm btn-link text-muted p-2 touch-target"
+            class="btn btn-sm btn-link text-muted p-2 pe-0 touch-target"
             type="button"
             data-bs-toggle="dropdown"
           >
