@@ -1,5 +1,9 @@
 <template>
-  <div class="card mb-3 task-card" draggable="true" @dragstart="onDragStart">
+  <div
+    class="card mb-3 task-card rounded-3"
+    draggable="true"
+    @dragstart="onDragStart"
+  >
     <div class="card-body ps-3 pe-1 pt-0">
       <div class="d-flex justify-content-between align-items-center mb-1">
         <h6 class="card-title mb-0 text-truncate pe-2" style="max-width: 85%">
