@@ -99,11 +99,11 @@ export default {
 
 <style>
 .kanban-column {
-  min-height: 500px;
+  min-height: auto;
   background-color: #f8f9fa;
 }
 
 .drag-area {
-  min-height: 100px;
+  min-height: auto;
 }
 </style>
