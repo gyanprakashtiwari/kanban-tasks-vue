@@ -30,6 +30,7 @@
       </p>
 
       <SubtaskChecklist
+        v-if="task.subtasks.length > 0"
         :subtasks="task.subtasks"
         class="mb-2"
         @update-subtasks="updateSubtasks"
@@ -42,10 +43,6 @@
           class="me-1"
         />
       </div>
-      <!-- <div class="d-flex justify-content-between align-items-center">
-        <Avatar :user="task.assignee" size="sm" />
-        <span class="badge bg-light text-dark small">{{ task.dueDate }}</span>
-      </div> -->
     </div>
   </div>
 </template>

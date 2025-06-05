@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="row d-flex justify-content-end align-items-center mb-4 px-3">
-      <div class="col-6">
+      <div class="col-md-6 col-4">
         <h3 class="mb-0">Your Tasks</h3>
       </div>
 
-      <div class="col-6">
+      <div class="col-md-6 col-8">
         <div class="d-flex justify-content-end align-items-center gap-2">
           <button
             class="btn btn-primary btn-sm rounded-3 px-3 py-2 small"
