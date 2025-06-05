@@ -1,14 +1,15 @@
 <template>
-  <div class="col-md-4">
-    <div class="card">
+  <div class="col-md-4 bg-transparent">
+    <div class="card border-0 bg-transparent mb-0">
       <div
-        class="card-header bg-white d-flex justify-content-between align-items-center"
+        class="card-header border-0 bg-transparent d-flex justify-content-start align-items-center"
       >
-        <h5 class="mb-0">{{ title }}</h5>
-        <span class="badge bg-secondary">{{ tasks.length }}</span>
+        <p class="mb-0 fw-semibold" style="color: #667085; font-size: 12px">
+          {{ title }}
+        </p>
       </div>
       <div
-        class="card-body p-3 kanban-column"
+        class="card-body border-0 p-3 mt-0 pt-1 kanban-column bg-transparent"
         @dragover.prevent
         @dragenter.prevent
         @drop="onDrop"
@@ -24,13 +25,6 @@
             <TaskCard :task="element" @click="openTaskDetail(element.id)" />
           </template>
         </draggable>
-
-        <button
-          class="btn btn-outline-secondary w-100 mt-2"
-          @click="openAddTaskModal"
-        >
-          <i class="bi bi-plus"></i> Add Task
-        </button>
       </div>
     </div>
   </div>
