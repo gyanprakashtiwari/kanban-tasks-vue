@@ -14,6 +14,11 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
               <a class="dropdown-item" href="#" @click.prevent="editTask"
+                >View Details</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" @click.prevent="editTask"
                 >Edit</a
               >
             </li>
