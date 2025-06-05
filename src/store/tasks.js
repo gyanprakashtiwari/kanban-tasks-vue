@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import { TASK_STATUS, TASK_COLUMNS } from "../constants/taskStatus";
+import cardImage from "../assets/images/card-image.png";
 
 export const useTaskStore = defineStore("tasks", () => {
   const tasks = ref([
@@ -11,17 +12,14 @@ export const useTaskStore = defineStore("tasks", () => {
       description: "Add drag and drop functionality between columns",
       status: TASK_STATUS.DOING,
       assignee: { name: "John Doe", avatar: "https://i.pravatar.cc/150?img=1" },
-      subtasks: [],
+      subtasks: [
+        { id: "3-1", title: "Define store structure", completed: true },
+        { id: "3-2", title: "Implement basic CRUD", completed: true },
+      ],
       labels: ["Feature"],
       dueDate: "2023-12-15",
-      comments: [
-        {
-          id: "c1",
-          author: "John Doe",
-          text: "Started working on this",
-          date: "2023-11-01",
-        },
-      ],
+      comments: [],
+      image: null,
     },
     {
       id: "2",
@@ -39,6 +37,7 @@ export const useTaskStore = defineStore("tasks", () => {
       labels: ["UI"],
       dueDate: "2023-12-10",
       comments: [],
+      image: null,
     },
     {
       id: "3",
@@ -56,6 +55,7 @@ export const useTaskStore = defineStore("tasks", () => {
       labels: ["Backend"],
       dueDate: "2023-11-30",
       comments: [],
+      image: null,
     },
     {
       id: "4",
@@ -73,6 +73,7 @@ export const useTaskStore = defineStore("tasks", () => {
       labels: ["Design", "UI"],
       dueDate: "2023-12-20",
       comments: [],
+      image: null,
     },
     {
       id: "5",
@@ -91,6 +92,7 @@ export const useTaskStore = defineStore("tasks", () => {
       labels: ["Integration"],
       dueDate: "2023-12-25",
       comments: [],
+      image: null,
     },
     {
       id: "6",
@@ -101,13 +103,11 @@ export const useTaskStore = defineStore("tasks", () => {
         name: "Chris Evans",
         avatar: "https://i.pravatar.cc/150?img=6",
       },
-      subtasks: [
-        { id: "6-1", title: "Test formatDate", completed: true },
-        { id: "6-2", title: "Test API helper", completed: true },
-      ],
+      subtasks: [],
       labels: ["Testing"],
       dueDate: "2023-11-28",
       comments: [],
+      image: cardImage,
     },
   ]);
 

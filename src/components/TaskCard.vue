@@ -35,6 +35,13 @@
         class="mb-2"
         @update-subtasks="updateSubtasks"
       />
+
+      <div v-if="task.image" class="mb-2">
+        <div class="card">
+          <img :src="task.image" class="card-img-top" alt="Task Image" />
+        </div>
+      </div>
+
       <div v-if="task.labels.length" class="mb-2">
         <LabelTag
           v-for="label in task.labels"
