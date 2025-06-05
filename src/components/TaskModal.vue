@@ -175,8 +175,11 @@ export default {
       modalInstance.value = new Modal(taskModal.value);
     };
 
-    const showModal = () => {
+    const showModal = (status = "To Do") => {
       if (!modalInstance.value) initModal();
+
+      resetForm();
+      form.value.status = status;
       modalInstance.value.show();
     };
 
@@ -235,8 +238,7 @@ export default {
       (newTask) => {
         if (newTask) {
           setupEditMode(newTask);
-        } else {
-          resetForm();
+          showModal(newTask.status);
         }
       }
     );

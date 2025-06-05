@@ -38,10 +38,11 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { useTaskStore } from "../store/tasks";
 import TaskColumn from "../components/TaskColumn.vue";
 import TaskModal from "../components/TaskModal.vue";
+import { TASK_COLUMNS, TASK_STATUS } from "../constants/taskStatus";
 
 export default {
   components: {
@@ -50,11 +51,12 @@ export default {
   },
   setup() {
     const taskStore = useTaskStore();
-    const columns = computed(() => taskStore.columns);
 
-    const showAddTaskModal = (status = "To Do") => {
-      // This would show the modal with the specified status
-      console.log("Show add task modal for status:", status);
+    const columns = computed(() => TASK_COLUMNS);
+    const taskModal = ref(null);
+
+    const showAddTaskModal = (status = TASK_STATUS.TODO) => {
+      taskModal.value?.showModal(status);
     };
 
     const handleTaskSubmit = (taskData) => {
@@ -63,6 +65,7 @@ export default {
 
     return {
       columns,
+      taskModal,
       showAddTaskModal,
       handleTaskSubmit,
     };
