@@ -29,6 +29,11 @@
         {{ task.description.substring(0, 60) }}...
       </p>
 
+      <SubtaskChecklist
+        :subtasks="task.subtasks"
+        class="mb-2"
+        @update-subtasks="updateSubtasks"
+      />
       <div v-if="task.labels.length" class="mb-2">
         <LabelTag
           v-for="label in task.labels"
@@ -37,13 +42,10 @@
           class="me-1"
         />
       </div>
-
-      <SubtaskProgress :subtasks="task.subtasks" class="mb-2" />
-
-      <div class="d-flex justify-content-between align-items-center">
+      <!-- <div class="d-flex justify-content-between align-items-center">
         <Avatar :user="task.assignee" size="sm" />
         <span class="badge bg-light text-dark small">{{ task.dueDate }}</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -54,12 +56,14 @@ import { useTaskStore } from "../store/tasks";
 import Avatar from "./Avatar.vue";
 import LabelTag from "./LabelTag.vue";
 import SubtaskProgress from "./SubtaskProgress.vue";
+import SubtaskChecklist from "./SubtaskChecklist.vue";
 
 export default {
   components: {
     Avatar,
     LabelTag,
     SubtaskProgress,
+    SubtaskChecklist,
   },
   props: {
     task: {
@@ -85,10 +89,15 @@ export default {
       }
     };
 
+    const updateSubtasks = (updatedSubtasks) => {
+      taskStore.updateSubtasks(props.task.id, updatedSubtasks);
+    };
+
     return {
       onDragStart,
       editTask,
       deleteTask,
+      updateSubtasks,
     };
   },
 };

@@ -122,6 +122,12 @@ export const useTaskStore = defineStore("tasks", () => {
       });
     }
   }
+  function updateSubtasks(taskId, updatedSubtasks) {
+    const task = tasks.value.find((t) => t.id === taskId);
+    if (task) {
+      task.subtasks = updatedSubtasks;
+    }
+  }
 
   function toggleSubtask(taskId, subtaskId) {
     const task = tasks.value.find((t) => t.id === taskId);
@@ -144,5 +150,6 @@ export const useTaskStore = defineStore("tasks", () => {
     addComment,
     addSubtask,
     toggleSubtask,
+    updateSubtasks,
   };
 });
