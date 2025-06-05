@@ -1,8 +1,10 @@
 <template>
   <div class="card mb-3 task-card" draggable="true" @dragstart="onDragStart">
-    <div class="card-body p-3">
-      <div class="d-flex justify-content-between align-items-start mb-2">
-        <h6 class="card-title mb-0">{{ task.title }}</h6>
+    <div class="card-body px-3 pt-0">
+      <div class="d-flex justify-content-between align-items-center mb-1">
+        <h6 class="card-title mb-0 text-truncate pe-2" style="max-width: 85%">
+          {{ task.title }}
+        </h6>
 
         <div class="dropdown" @click.stop>
           <button
@@ -14,19 +16,19 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
-              <a class="dropdown-item" href="#" @click.prevent="editTask">
-                View Details
-              </a>
+              <a class="dropdown-item" href="#" @click.prevent="editTask"
+                >View Details</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="#" @click.prevent="editTask">
-                Edit
-              </a>
+              <a class="dropdown-item" href="#" @click.prevent="editTask"
+                >Edit</a
+              >
             </li>
             <li>
-              <a class="dropdown-item" href="#" @click.prevent="deleteTask">
-                Delete
-              </a>
+              <a class="dropdown-item" href="#" @click.prevent="deleteTask"
+                >Delete</a
+              >
             </li>
           </ul>
         </div>
@@ -145,5 +147,25 @@ export default {
 /* Prevent pointer conflict on drag */
 .clickable-content {
   cursor: pointer;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Makes sure icon button and title are aligned */
+.touch-target {
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: slightly reduce line spacing below title */
+.card-text {
+  margin-top: 4px;
 }
 </style>
