@@ -104,6 +104,6 @@ export default {
 }
 
 .drag-area {
-  min-height: auto;
+  min-height: 100px;
 }
 </style>
