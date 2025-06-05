@@ -2,21 +2,28 @@
   <div v-if="task" class="task-detail-container">
     <div class="card">
       <div class="card-body">
+        <!-- Header -->
         <div class="d-flex justify-content-between align-items-start mb-4">
           <div>
-            <h2 class="mb-1">{{ task.title }}</h2>
+            <!-- Editable title -->
+            <input
+              v-model="editableTitle"
+              class="form-control form-control-lg mb-1"
+            />
+
             <div class="d-flex align-items-center mb-3">
               <span
                 class="badge me-2"
                 :class="`bg-${getStatusColor(task.status)}`"
+                >{{ task.status }}</span
               >
-                {{ task.status }}
-              </span>
               <small class="text-muted"
                 >Created on {{ formatDate(task.dueDate) }}</small
               >
             </div>
           </div>
+
+          <!-- Actions dropdown unchanged -->
           <div class="dropdown">
             <button
               class="btn btn-outline-secondary dropdown-toggle"
@@ -37,11 +44,14 @@
                 >
               </li>
               <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a class="dropdown-item" href="#" @click.prevent="changeStatus">
-                  Move to <i class="bi bi-chevron-right float-end"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-submenu">
+              <li class="dropend">
+                <a
+                  class="dropdown-item dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                  >Move to</a
+                >
+                <ul class="dropdown-menu">
                   <li v-for="status in availableStatuses" :key="status">
                     <a
                       class="dropdown-item"
@@ -57,13 +67,17 @@
           </div>
         </div>
 
+        <!-- Description -->
         <div class="row mb-4">
           <div class="col-md-8">
             <div class="mb-4">
               <h5 class="mb-2">Description</h5>
-              <p class="text-muted">
-                {{ task.description || "No description provided" }}
-              </p>
+              <!-- Editable textarea for description -->
+              <textarea
+                v-model="editableDescription"
+                class="form-control"
+                rows="5"
+              ></textarea>
             </div>
 
             <SubtaskList
@@ -71,7 +85,6 @@
               @toggle="toggleSubtask"
               @add="addSubtask"
             />
-
             <CommentSection
               :comments="task.comments"
               @add-comment="addComment"
@@ -79,6 +92,7 @@
           </div>
 
           <div class="col-md-4">
+            <!-- Task details card unchanged -->
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title mb-3">Task Details</h5>
@@ -98,7 +112,10 @@
 
                 <div>
                   <h6 class="small text-muted mb-1">Labels</h6>
-                  <div v-if="task.labels.length" class="d-flex flex-wrap gap-2">
+                  <div
+                    v-if="task.labels?.length"
+                    class="d-flex flex-wrap gap-2"
+                  >
                     <LabelTag
                       v-for="label in task.labels"
                       :key="label"
@@ -109,11 +126,17 @@
                 </div>
               </div>
             </div>
+
+            <!-- Save Button -->
+            <button class="btn btn-primary w-100" @click="saveTask">
+              Save
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <div v-else class="text-center py-5">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
@@ -122,7 +145,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useTaskStore } from "../store/tasks";
 import Avatar from "../components/Avatar.vue";
@@ -144,17 +167,21 @@ export default {
     },
   },
   setup(props) {
-    const route = useRoute();
     const router = useRouter();
     const taskStore = useTaskStore();
 
     const task = computed(() => taskStore.getTaskById(props.id));
+
+    // Local refs for editable fields
+    const editableTitle = ref("");
+    const editableDescription = ref("");
+
     const availableStatuses = computed(() => taskStore.columns);
 
     const getStatusColor = (status) => {
       const colors = {
         "To Do": "secondary",
-        Doine: "warning",
+        Doing: "warning",
         Done: "success",
       };
       return colors[status] || "primary";
@@ -167,7 +194,6 @@ export default {
     };
 
     const editTask = () => {
-      // This would open the edit modal
       console.log("Edit task", props.id);
     };
 
@@ -194,9 +220,26 @@ export default {
       taskStore.addComment(props.id, commentText);
     };
 
+    // Save changes and go back to dashboard
+    const saveTask = () => {
+      if (!editableTitle.value.trim()) {
+        alert("Title cannot be empty!");
+        return;
+      }
+
+      taskStore.updateTask(props.id, {
+        title: editableTitle.value,
+        description: editableDescription.value,
+      });
+
+      router.push({ name: "Dashboard" });
+    };
+
     onMounted(() => {
-      if (!task.value) {
-        // In a real app, we might fetch the task here if it's not in the store
+      if (task.value) {
+        editableTitle.value = task.value.title;
+        editableDescription.value = task.value.description || "";
+      } else {
         console.warn("Task not found:", props.id);
       }
     });
@@ -212,21 +255,10 @@ export default {
       toggleSubtask,
       addSubtask,
       addComment,
+      editableTitle,
+      editableDescription,
+      saveTask,
     };
   },
 };
 </script>
-
-<style>
-.dropdown-submenu {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  margin-top: -1px;
-  display: none;
-}
-
-.dropdown-menu > li:hover > .dropdown-submenu {
-  display: block;
-}
-</style>
