@@ -34,6 +34,7 @@
     </div>
 
     <TaskModal ref="taskModal" :columns="columns" @submit="handleTaskSubmit" />
+    <InviteModal ref="inviteModal" @invite="handleInvite" />
   </div>
 </template>
 
@@ -42,18 +43,21 @@ import { ref, computed } from "vue";
 import { useTaskStore } from "../store/tasks";
 import TaskColumn from "../components/TaskColumn.vue";
 import TaskModal from "../components/TaskModal.vue";
+import InviteModal from "../components/InviteModal.vue";
 import { TASK_COLUMNS, TASK_STATUS } from "../constants/taskStatus";
 
 export default {
   components: {
     TaskColumn,
     TaskModal,
+    InviteModal,
   },
   setup() {
     const taskStore = useTaskStore();
 
     const columns = computed(() => TASK_COLUMNS);
     const taskModal = ref(null);
+    const inviteModal = ref(null);
 
     const showAddTaskModal = (status = TASK_STATUS.TODO) => {
       taskModal.value?.showModal(status);
@@ -63,11 +67,23 @@ export default {
       taskStore.addTask(taskData);
     };
 
+    const openInviteModal = () => {
+      inviteModal.value?.showModal();
+    };
+
+    const handleInvite = ({ email, role }) => {
+      console.log(`Invited ${email} as ${role}`);
+      // Here you would typically make an API call to send the invite
+    };
+
     return {
       columns,
       taskModal,
+      inviteModal,
       showAddTaskModal,
       handleTaskSubmit,
+      openInviteModal,
+      handleInvite,
     };
   },
 };
