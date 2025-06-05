@@ -1,25 +1,25 @@
 <template>
   <div>
-    <div class="row d-flex justify-content-end align-items-center mb-4 px-3">
-      <div class="col-md-6 col-4">
+    <div class="row mb-4 px-3">
+      <div class="col-12 col-sm-6 mb-2 mb-sm-0 d-flex align-items-center">
         <h3 class="mb-0">Your Tasks</h3>
       </div>
 
-      <div class="col-md-6 col-8">
-        <div class="d-flex justify-content-end align-items-center gap-2">
-          <button
-            class="btn btn-primary btn-sm rounded-3 px-3 py-2 small"
-            @click="showAddTaskModal"
-          >
-            Add a task
-          </button>
-          <button
-            class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2 small"
-            @click="openInviteModal"
-          >
-            Invite
-          </button>
-        </div>
+      <div
+        class="col-12 col-sm-6 d-flex justify-content-sm-end justify-content-start align-items-center gap-2 flex-wrap"
+      >
+        <button
+          class="btn btn-primary btn-sm rounded-3 px-3 py-2 small"
+          @click="showAddTaskModal"
+        >
+          Add a task
+        </button>
+        <button
+          class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2 small"
+          @click="openInviteModal"
+        >
+          Invite
+        </button>
       </div>
     </div>
 
@@ -73,7 +73,6 @@ export default {
 
     const handleInvite = ({ email, role }) => {
       console.log(`Invited ${email} as ${role}`);
-      // Here you would typically make an API call to send the invite
     };
 
     return {
