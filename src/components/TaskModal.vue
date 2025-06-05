@@ -92,26 +92,30 @@
               </div>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Subtasks</label>
-              <div
-                v-for="(subtask, index) in form.subtasks"
-                :key="index"
-                class="d-flex mb-2"
-              >
-                <input
-                  type="text"
-                  class="form-control"
-                  v-model="form.subtasks[index]"
-                />
-                <button
-                  type="button"
-                  class="btn btn-outline-danger ms-2"
-                  @click="removeSubtask(index)"
+            <div class="mb-4">
+              <label class="form-label mb-2">Subtasks</label>
+
+              <div class="d-flex flex-column gap-2 mb-3">
+                <div
+                  v-for="(subtask, index) in form.subtasks"
+                  :key="index"
+                  class="d-flex"
                 >
-                  <i class="bi bi-trash"></i>
-                </button>
+                  <input
+                    type="text"
+                    class="form-control"
+                    v-model="form.subtasks[index]"
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger ms-2"
+                    @click="removeSubtask(index)"
+                  >
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
               </div>
+
               <button
                 type="button"
                 class="btn btn-outline-secondary btn-sm"

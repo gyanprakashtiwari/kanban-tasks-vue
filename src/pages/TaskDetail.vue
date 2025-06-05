@@ -2,6 +2,12 @@
   <div v-if="task" class="task-detail-container">
     <div class="card">
       <div class="card-body">
+        <!-- Go Back Button -->
+        <div class="mb-3">
+          <button class="btn btn-sm btn-outline-secondary" @click="goBack">
+            ← Go Back
+          </button>
+        </div>
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-start mb-4">
           <div>
@@ -234,6 +240,9 @@ export default {
 
       router.push({ name: "Dashboard" });
     };
+    const goBack = () => {
+      router.push({ path: "/" }); // Or { name: "Dashboard" } if you use named routes
+    };
 
     onMounted(() => {
       if (task.value) {
@@ -258,6 +267,7 @@ export default {
       editableTitle,
       editableDescription,
       saveTask,
+      goBack,
     };
   },
 };
