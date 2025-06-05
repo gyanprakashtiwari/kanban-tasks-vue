@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 import { v4 as uuidv4 } from "uuid";
+import { TASK_STATUS, TASK_COLUMNS } from "../constants/taskStatus";
 
 export const useTaskStore = defineStore("tasks", () => {
   const tasks = ref([
@@ -8,7 +9,7 @@ export const useTaskStore = defineStore("tasks", () => {
       id: "1",
       title: "Implement drag and drop",
       description: "Add drag and drop functionality between columns",
-      status: "Doine",
+      status: TASK_STATUS.DOING,
       assignee: { name: "John Doe", avatar: "https://i.pravatar.cc/150?img=1" },
       subtasks: [
         { id: "1-1", title: "Research libraries", completed: true },
@@ -30,7 +31,7 @@ export const useTaskStore = defineStore("tasks", () => {
       id: "2",
       title: "Create task modal",
       description: "Design and implement the task creation modal",
-      status: "To Do",
+      status: TASK_STATUS.TODO,
       assignee: {
         name: "Jane Smith",
         avatar: "https://i.pravatar.cc/150?img=2",
@@ -47,7 +48,7 @@ export const useTaskStore = defineStore("tasks", () => {
       id: "3",
       title: "Setup Pinia store",
       description: "Create the central store for task management",
-      status: "Done",
+      status: TASK_STATUS.DONE,
       assignee: {
         name: "Mike Johnson",
         avatar: "https://i.pravatar.cc/150?img=3",
@@ -62,7 +63,7 @@ export const useTaskStore = defineStore("tasks", () => {
     },
   ]);
 
-  const columns = ref(["To Do", "Doine", "Done"]);
+  const columns = ref(TASK_COLUMNS);
 
   const getTaskById = computed(
     () => (id) => tasks.value.find((task) => task.id === id)

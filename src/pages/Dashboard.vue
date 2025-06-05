@@ -1,16 +1,22 @@
 <template>
   <div>
-    <div class="row d-flex justify-content-end align-items-center mb-4">
+    <div class="row d-flex justify-content-end align-items-center mb-4 px-3">
       <div class="col-6">
         <h3 class="mb-0">Your Tasks</h3>
       </div>
 
       <div class="col-6">
         <div class="d-flex justify-content-end align-items-center gap-2">
-          <button class="btn btn-primary btn-sm" @click="showAddTaskModal">
-            Add Task
+          <button
+            class="btn btn-primary btn-sm rounded-3 px-3 py-2 small"
+            @click="showAddTaskModal"
+          >
+            Add a task
           </button>
-          <button class="btn btn-outline-dark btn-sm" @click="openInviteModal">
+          <button
+            class="btn btn-outline-dark btn-sm rounded-3 px-3 py-2 small"
+            @click="openInviteModal"
+          >
             Invite
           </button>
         </div>
