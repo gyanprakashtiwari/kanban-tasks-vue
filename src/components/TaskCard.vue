@@ -12,7 +12,7 @@
             type="button"
             data-bs-toggle="dropdown"
           >
-            <i class="bi bi-three-dots-vertical fs-5"></i>
+            <i class="bi bi-three-dots-vertical fs-6"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li>
