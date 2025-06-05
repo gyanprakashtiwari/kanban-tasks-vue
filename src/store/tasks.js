@@ -12,10 +12,7 @@ export const useTaskStore = defineStore("tasks", () => {
       description: "Add drag and drop functionality between columns",
       status: TASK_STATUS.DOING,
       assignee: { name: "John Doe", avatar: "https://i.pravatar.cc/150?img=1" },
-      subtasks: [
-        { id: "3-1", title: "Define store structure", completed: true },
-        { id: "3-2", title: "Implement basic CRUD", completed: true },
-      ],
+      subtasks: [],
       labels: ["Feature"],
       dueDate: "2023-12-15",
       comments: [],
