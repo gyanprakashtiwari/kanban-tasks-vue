@@ -137,14 +137,23 @@ export default {
 
 <style>
 .kanban-column {
-  min-height: 200px; /* Increased minimum height for better drop target */
+  min-height: 600px;
   background-color: #f8f9fa;
   transition: all 0.2s ease;
   border-radius: 8px;
 }
 
 .drag-area {
-  min-height: 100px;
+  min-height: 600px;
+}
+
+@media (max-width: 767.98px) {
+  .kanban-column {
+    min-height: 200px;
+  }
+  .drag-area {
+    min-height: 100px;
+  }
 }
 
 .highlight-column {
